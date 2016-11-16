@@ -1,0 +1,49 @@
+<ion-view view-title="List Rides">
+    <ion-content>
+        <br><br>
+
+        <div class="list card" >
+
+            <div class="item item-divider">
+                As minhas boleias criadas
+            </div>
+
+            <div ng-if="createdRides.length > 0" ng-repeat="createdRide in createdRides | orderBy:'date'" type="item-text-wrap" class="card">
+                <a href="#/rideDetails/{{createdRide.id}}/listCreatedRides" style="text-decoration: none; color:black;">
+                    <div class="text-wrap">
+                        <i class="ion-calendar orange" style="font-size:100%; float:left; margin-left: 27px;"> </i>
+                        <p style="margin-left: 47px"> {{createdRide.date | date : 'dd/MM/yy HH:mm'}} </p>
+                        <i class="ion-ios-home orange" style="font-size:100%; float:left; margin-left: 27px;"> </i>
+                        <p style="margin-left: 45px;"> {{createdRide.startLocation}}</p>
+                        <i class="ion-ios-location orange" style="font-size:100%; float:left;  margin-left: 29px;"> </i>
+                        <p style="margin-left: 47px;">  {{createdRide.destination}}</p>
+                    </div>
+                </a>
+            </div>
+
+            <div ng-if="createdRides.length == 0 || !createdRides"type="item-text-wrap">
+                <div class="item">
+                    <div class="item item-text-wrap item-icon-left">
+                        <i class="icon ion-sad-outline"></i>
+                        Não tem boleias criadas
+                    </div>
+                    <a class="item item-icon-left assertive" ng-click="showConfirm()">
+                        <i class="icon ion-map orange" style="bfont-size:150%"></i>
+                        <a1 class="orange"> Criar Boleia </a1>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="list card">
+            <a class="item item-icon-left assertive" href="#/profile">
+                <i class="icon ion-android-arrow-dropleft-circle orange" style="font-size:150%"></i>
+                <a1 class="orange"> Regressar </a1>
+            </a>
+        </div>
+
+        <br><br>
+
+    </ion-content>
+</ion-view>

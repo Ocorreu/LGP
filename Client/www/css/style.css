@@ -1,0 +1,488 @@
+/* CSS to color the icons to iTGrow's orange */
+
+::-webkit-input-placeholder {
+	color:    #fff;
+}
+:-moz-placeholder {
+	color:    #fff;
+}
+::-moz-placeholder {
+	color:    #fff;
+}
+:-ms-input-placeholder {
+	color:    #fff;
+}
+
+.popup-body {
+	overflow: hidden
+}
+
+
+.popup-buttons .button:first-child{
+	background-color: rgb(243,121,38);
+	border-color: rgb(243,121,38);
+	color: #fff;
+}
+
+.popup-buttons .button:nth-child(2) {
+	background-color: rgb(243,121,38);
+	border-color: rgb(243,121,38);
+	color: #fff;
+}
+
+.badge.badge-assertive.orange {
+	background-color: rgb(243,121,38);
+}
+
+.orange {
+	color: rgb(243,121,38);
+}
+
+.white{
+	color:#fff;
+}
+
+.error {
+	color: red;
+}
+
+/* create ride form */
+
+#seats, #cost, #time, #infoName, #date {
+	border:1px solid #DDD;
+	border-radius:3px;
+	width:100%;
+	padding:7px;
+	transition: border 0.3s;
+}
+#seats:focus, #seats.focus, #cost:focus, #cost.focus, #time:focus, #time.focus, #infoName:focus, #infoName.focus, #date:focus, #date.focus{
+	border:1px solid rgb(243,121,38);
+}
+
+#typeCost{
+	padding: 6px;
+	width:100%;
+	border: none;
+	border: solid 2px #c9c9c9;
+	transition: border 0.3s;
+}
+#typeCost:focus,
+#typeCost.focus {
+	border: solid 2px #969696;
+}
+
+/* Search page */
+
+.card.col.search-ride {
+	padding:0px;
+}
+
+.button-ride-search {
+	border-color:#DDD;
+	display:block;
+	width:100%;
+}
+
+.submit-search {
+	position:center;
+	width:50%;
+	left:25%;
+	background-color: rgb(243,121,38);
+	color:white;
+}
+
+.button-searchType-selected {
+	background-color: rgb(243,121,38);
+	color:white;
+	border-color:#DDD;
+}
+
+.button-searchType-inactive {
+	background-color: #DDD;
+	color:black;
+	border-color:#DDD;
+}
+
+/* Login page SignUp Page */
+
+.loginBody, .signup_body{
+	/*background-image:url(../img/loginBackground.jpg);
+	overflow: auto;
+	background-size:cover;*/
+	background: url(../img/loginBackground.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+}
+
+.fillHeight{
+	height: 20vh;
+}
+
+.loginBody .icon, .signup_body .icon, .resetPasswordBody .icon{
+	width:250px;
+	height:87px;
+	margin-left:auto;
+	margin-right:auto;
+	background-image:url(../img/iTGrow.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	margin-top:80px;
+	margin-bottom:80px;
+}
+
+.loginBody form input[placeholder], .signup_body form input[placeholder]{
+	padding-left:35px;
+	padding-top:15px;
+	padding-bottom:10px;
+	margin-bottom:15px;
+	color:#fff;
+}
+
+.loginBody form input[type="text"],.loginBody form input[type="password"],.loginBody form input[type="submit"],.signup_body form input[type="text"], .signup_body form input[type="email"],.signup_body form input[type="password"],.signup_body form input[type="submit"]{
+	margin-left:auto;
+	margin-right:auto;
+	width:40%;
+	height:47px;
+	border-bottom:1px solid #fff;
+	background-color:transparent;
+	font-size:16px;
+}
+
+.loginBody form input[type="submit"], .signup_body form input[type="submit"]{
+	display: block;
+	margin-top:50px;
+	height:5%;
+	padding-top:15px;
+	padding-bottom:15px;
+	border:1px solid rgb(203,87,9);
+	background: #f2a979; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f2a979 0%, #f37926 50%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2a979), color-stop(50%,#f37926)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f2a979 0%,#f37926 50%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f2a979 0%,#f37926 50%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f2a979 0%,#f37926 50%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f2a979 0%,#f37926 50%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2a979', endColorstr='#f37926',GradientType=0 ); /* IE6-9 */
+	color:#fff;
+	font-size:17px;
+}
+
+.loginBody .signupButtonLink, .signup_body .loginButton, .resetPasswordBody .resetPasswordButton, .resetPasswordBody .loginButton{
+	margin-left:auto;
+	margin-right:auto;
+	width:40%;
+	display: block;
+	margin-top:10px;
+	padding-top:15px;
+	padding-bottom:15px;
+	border:1px solid rgb(203,87,9);
+	background: #ffffff; /* Old browsers */
+	color:rgb(243,121,38);
+	font-size:17px;
+}
+
+.loginBody .loginButton{
+	border-radius:0px;
+}
+
+.loginBody .email, .signup_body .first_name, .signup_body .last_name, .signup_body .email{
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-image:url(../img/email_login.png);
+}
+
+.loginBody .password, .signup_body .password, .signup_body .confirm_password{
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-image:url(../img/lock.png);
+}
+
+.loginBody .email::-webkit-input-placeholder,.loginBody .password::-webkit-input-placeholder, .resetPasswordBody .email::-webkit-input-placeholder
+{
+	color:#fff;
+	font-size:16px;
+	opacity:0.7;
+}
+.loginBody .email:-moz-placeholder , .loginBody .password:-moz-placeholder, .resetPasswordBody .email:-moz-placeholder
+{
+	color:#fff;
+	font-size:16px;
+	opacity:0.7;
+}
+.loginBody .email::-moz-placeholder, .loginBody .password::-moz-placeholder, .resetPasswordBody .email:-moz-placeholder
+{
+	color:#fff;
+	font-size:16px;
+	opacity:0.7;
+}
+.loginBody .email:-ms-input-placeholder , .loginBody .password:-ms-input-placeholder, .resetPasswordBody .email:-ms-input-placeholder
+{
+	color:#fff;
+	font-size:16px;
+	opacity:0.7;
+}
+
+.loginBody .completeHeight{
+	height:15vh;
+}
+
+.loginBody .forgotPass{
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:15px;
+	padding-bottom:15px;
+	text-align:center;
+	margin-top:25px;
+}
+
+.loginBody .forgotPass a{
+	text-decoration:none;
+	color:#fff;
+}
+
+.loginBody .forgotPass a:hover{
+	text-decoration:underline;
+}
+
+@media all and (min-height: 700px) {
+	.fillHeight{
+		height:30vh;
+	}
+}
+
+@media all and (min-height: 850px) {
+	.fillHeight{
+		height:35vh;
+	}
+}
+
+@media all and (min-height: 900px) {
+	.fillHeight{
+		height:40vh;
+	}
+}
+
+@media all and (min-height: 966px) {
+	.fillHeight{
+		height:46vh;
+	}
+}
+
+@media all and (min-height: 1050px) {
+	.fillHeight{
+		height:48vh;
+	}
+}
+
+@media all and (min-height: 1080px) {
+	.fillHeight{
+		height:50vh;
+	}
+}
+
+@media all and (min-height: 1200px) {
+	.fillHeight{
+		height:55vh;
+	}
+}
+
+@media all and (min-height: 1280px) {
+	.fillHeight{
+		height:59vh;
+	}
+}
+
+
+/*EDIT PROFILE PAGE*/
+
+.edit_profile_icon{
+	font-size:150%;
+	color:rgb(243,121,38);
+	margin-left:-45px;
+	display:inline-block;
+	margin-top:15px;
+}
+
+h2.up35{
+	margin-top:-35px;
+}
+
+p.change_profile_photo{
+	overflow: hidden;
+}
+
+p.change_profile_photo input[type="file"] {
+	display: block !important;
+	height:30px;
+	opacity: 0 !important;
+	overflow: hidden !important;
+}
+
+p.change_profile_photo input[type="file"]:hover {
+	cursor:pointer;
+}
+
+.edit_profile p input[type="text"], .edit_profile p input[type="password"]{
+	border:1px solid #DDD;
+	border-radius:3px;
+	width:100%;
+	padding:7px;
+	transition: border 0.3s;
+}
+
+.edit_profile p input[type="text"]:focus, .edit_profile p input[type="password"]:focus, .focusClass:focus{
+	border:1px solid rgb(243,121,38);
+}
+
+.input_title{
+	color:black;
+	font-size:13px;
+	font-weight: bold;
+}
+
+
+/*PARA A APLICA��O M�VEL*/
+
+@media all and (max-width: 600px) {
+	.button-searchType-selected {
+		font-size:3.5vw;
+	}
+
+	.button-searchType-inactive {
+		font-size:3.5vw;
+	}
+
+	/* Login page, SignUp page */
+
+	.loginBody form input[type="text"],.loginBody form input[type="password"], .signup_body form input[type="text"], .signup_body form input[type="password"], .signup_body form input[type="email"], .resetPasswordBody form input{
+		margin-left:auto;
+		margin-right:auto;
+		width:80%;
+	}
+
+	.loginBody form input[type="submit"], .signup_body form input[type="submit"]{
+		width:80%;
+	}
+
+	.loginBody .forgotPass{
+		width:100%;
+	}
+
+	.loginBody .signupButtonLink, .signup_body .loginButton, .resetPasswordBody .resetPasswordButton{
+		width:80%;
+	}
+
+	.loginBody .forgotPass .text{
+		margin-left:10%;
+	}
+	.loginBody .forgotPass .arrow{
+		margin-right:10%;
+	}
+}
+
+/* Sign Up Page only */
+
+.signup_body form input[type="text"], .signup_body form input[type="email"], .signup_body form input[type="password"], .resetPasswordBody form input[type="email"] {
+	margin-bottom:10px;
+}
+
+.signup_body form input[type="submit"] {
+	margin-bottom: -20px;
+}
+
+.signup_body ::-webkit-input-placeholder {
+	color:    #fff;
+}
+
+.signup_body :-moz-placeholder {
+	color:    #fff;
+}
+
+.signup_body ::-moz-placeholder {
+	color:    #fff;
+}
+
+.signup_body :-ms-input-placeholder {
+	color:    #fff;
+}
+
+
+/* Recuperar Password */
+
+.resetPasswordBody {
+	width: 100%;
+}
+
+.resetPasswordBody > form > input {
+	margin-top: 15%;
+	margin-bottom: 10%;
+
+}
+
+.loginButton > button
+{	margin-bottom: 25%; }
+
+
+/*---------------------------------BANUSERS PAGE---------------------------------*/
+.search-bar{
+	border:1px solid #B2B2B2;
+	border-radius:5px;
+}
+
+
+/*-----------------------------iTGrow Fonts------------------------------------*/
+@font-face {
+	font-family: ApexNewLight;
+	src: url(fonts/apexnew-light.otf);
+}
+
+@font-face {
+	font-family: ApexNewThin;
+	src: url(fonts/apexnew-thin.otf);
+}
+
+@font-face {
+	font-family: ApexNewBook;
+	src: url(fonts/apexnew-book.otf);
+}
+
+@font-face {
+	font-family: ApexNewMedium;
+	src: url(fonts/apexnew-medium.otf);
+}
+
+.iTGrowApexNewLight{
+	font-family: ApexNewLight !important;
+}
+
+.iTGrowApexNewThin{
+	font-family: ApexNewThin !important;
+}
+
+.iTGrowApexNewBook{
+	font-family: ApexNewBook !important;
+}
+
+.iTGrowApexNewMedium{
+	font-family: ApexNewMedium !important;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-family: ApexNewMedium !important;
+}
+
+body, div{
+	font-family: ApexNewBook !important;
+}
+
+/* ---------------------------- ConfirmAccount ------------------------*/
+
+#confirmation_text {
+	text-align: center;
+	color: white;
+	padding-bottom:20%;
+	font-size: 115%;
+}
+
+/* ---------------------------- CreateRide ------------------------*/

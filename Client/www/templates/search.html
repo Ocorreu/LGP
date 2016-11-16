@@ -1,0 +1,291 @@
+﻿<ion-view view-title="Search">
+    <ion-content>
+        <br><br>
+
+        <div class="card">
+            <label class="item item-input">
+                <span class="input-label" style="padding:0">Data</span>
+                <input type="date" style="margin-left:20%; padding:0" placeholder="dd/mm/aa" ng-model="date" ng-change="dateChange(date)">
+            </label>
+        </div>
+        <div class="button-bar">
+            <a ng-repeat="type in collection"
+               ng-class="{ 'button-searchType-selected': $index == selectedRideType, 'button-searchType-inactive': $index != selectedRideType }"
+               ng-disabled="!hasDate"
+               ng-click="itemClicked($index)"
+               class="button button-searchType-selected" style="font-size: 12px">
+                {{type}}
+            </a>
+        </div>
+
+        <form>
+            <div ng-if="resultRides.length > 0" class="row">
+                <div class="card col search-ride" ng-if= "selectedRideType === 0">
+                    <div class="item item-text-wrap item-icon-left" style="background-color: #DDD">
+                        <i class="icon ion-home"></i>
+                        Partida
+                    </div>
+                    <div class="button button-ride-search" ng-model="newRide.startDistrict" ng-click="showModalDistrict()">
+                        {{district}}
+                    </div>
+                    <div class="button button-ride-search" ng-model="newRide.startMunicipality" ng-click="showModalMunicipality()"
+                         ng-disabled="!hasDistrict">
+                        {{municipality}}
+                    </div>
+                </div>
+                <div class="card col search-ride" ng-if= "selectedRideType === 0">
+                    <div class="item item-text-wrap item-icon-left" style="background-color: #DDD">
+                        <i class="icon ion-ios-location"></i>
+                        Destino
+                    </div>
+                    <div class="button button-ride-search" ng-disabled="true">
+                    </div>
+                    <div class="button button-ride-search" ng-model="newRide.locationName" ng-click="showModalWorkLocation()">
+                        {{workLocation}}
+                    </div>
+                </div>
+
+
+                <div class="card col search-ride" ng-if= "selectedRideType === 1">
+                    <div class="item item-text-wrap item-icon-left" style="background-color: #DDD">
+                        <i class="icon ion-home"></i>
+                        Partida
+                    </div>
+                    <div class="button button-ride-search" ng-disabled="true">
+                    </div>
+                    <div class="button button-ride-search" ng-model="newRide.locationName" ng-click="showModalWorkLocation()">
+                        {{workLocation}}
+                    </div>
+
+                </div>
+                <div class="card col search-ride" ng-if= "selectedRideType === 1">
+                    <div class="item item-text-wrap item-icon-left" style="background-color: #DDD">
+                        <i class="icon ion-ios-location"></i>
+                        Destino
+                    </div>
+                    <div class="button button-ride-search" ng-model="newRide.destinationDistrict" ng-click="showModalDistrict()">
+                        {{district}}
+                    </div>
+                    <div class="button button-ride-search" ng-model="newRide.destinationMunicipality" ng-click="showModalMunicipality()"
+                         ng-disabled="!hasDistrict">
+                        {{municipality}}
+                    </div>
+                </div>
+
+
+                <div class="card col search-ride" ng-if= "selectedRideType === 2">
+                    <div class="item item-text-wrap item-icon-left" style="background-color: #DDD">
+                        <i class="icon ion-home"></i>
+                        Partida
+                    </div>
+                    <div class="button button-ride-search" ng-model="newRide.locationName" ng-click="showModalStartOcasional()">
+                        {{ocasionalStart}}
+                    </div>
+
+                </div>
+                <div class="card col search-ride" ng-if= "selectedRideType === 2">
+                    <div class="item item-text-wrap item-icon-left" style="background-color: #DDD">
+                        <i class="icon ion-ios-location"></i>
+                        Destino
+                    </div>
+                    <div class="button button-ride-search" ng-model="newRide.destinationDistrict" ng-click="showModalEndOcasional()">
+                        {{ocasionalEnd}}
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <div ng-if="hasDate">
+
+
+            <a ng-show="seeCounter" ng-if="resultRides.length > 0" class="item item-icon-left orange" style="background-color: rgb(243,121,38)" ng-click="showResults()" >
+                <i class="icon ion-chevron-down" style="color: white"></i>
+                <div style="color: white" > Ver Resultados </div>
+                <span class="badge badge-stable" style="color: rgb(243,121,38)">{{resultRides.length}}</span>
+            </a>
+
+            <a ng-show="!seeCounter" ng-if="resultRides.length > 0" class="item item-icon-left orange" style="background-color: rgb(243,121,38)" ng-click="hideResults()">
+                <i class="icon ion-chevron-up" style="color: white"></i>
+                <div style="color: white" > Esconder resultados </div>
+            </a>
+
+
+            <div class="text-wrap list card" ng-repeat="resultRide in resultRides | orderBy:'cost'" ng-show="seeResults">
+                <div ng-if="resultRide.rideType == 'Ocasional' ">
+                    <i class="ion-calendar orange" style="font-size:100%; float:left; margin-left: 27px;"> </i>
+                    <p style="margin-left: 47px"> {{resultRide.date | date : 'dd/MM/yy HH:mm'}} </p>
+                    <i class="ion-ios-home orange" style="font-size:100%; float:left; margin-left: 27px;"> </i>
+                    <p style="margin-left: 45px;"> {{resultRide.startLocation}}</p>
+                    <i class="ion-ios-location orange" style="font-size:100%; float:left;  margin-left: 29px;"> </i>
+                    <p style="margin-left: 47px;">  {{resultRide.destination}}</p>
+                    <i class="ion-social-euro orange" style="font-size:100%; float:left;  margin-left: 29px;"> </i>
+                    <p style="margin-left: 47px;">  {{resultRide.cost}}</p>
+                    <a class="item item-icon-left assertive" href="#/rideDetails/{{resultRide.id}}/search">
+                        <i class="icon ion-information-circled orange"></i>
+                        <a1 class="orange"> Ver detalhes </a1>
+                    </a>
+                </div>
+
+                <div ng-if="resultRide.rideType === 'CT'">
+                    <i class="ion-calendar orange" style="font-size:100%; float:left; margin-left: 27px;"> </i>
+                    <p style="margin-left: 47px"> {{resultRide.date | date : 'dd/MM/yy HH:mm'}} </p>
+                    <i class="ion-ios-home orange" style="font-size:100%; float:left; margin-left: 27px;"> </i>
+                    <p style="margin-left: 45px;"> {{resultRide.district}}</p>
+                    <p style="margin-left: 45px;"> {{resultRide.municipality}}</p>
+                    <p style="margin-left: 45px;"> {{resultRide.street}}</p>
+                    <i class="ion-ios-location orange" style="font-size:100%; float:left;  margin-left: 29px;"> </i>
+                    <p style="margin-left: 47px;">  {{resultRide.workLocation}}</p>
+                    <i class="ion-social-euro orange" style="font-size:100%; float:left;  margin-left: 29px;"> </i>
+                    <p style="margin-left: 47px;">  {{resultRide.cost}}</p>
+                    <a class="item item-icon-left assertive" href="#/rideDetails/{{resultRide.id}}/search">
+                        <i class="icon ion-information-circled orange"></i>
+                        <a1 class="orange"> Ver detalhes </a1>
+                    </a>
+                </div>
+
+                <div ng-if="resultRide.rideType === 'TC'">
+                    <i class="ion-calendar orange" style="font-size:100%; float:left; margin-left: 27px;"> </i>
+                    <p style="margin-left: 47px"> {{resultRide.date | date : 'dd/MM/yy HH:mm'}} </p>
+                    <i class="ion-ios-location orange" style="font-size:100%; float:left;  margin-left: 29px;"> </i>
+                    <p style="margin-left: 47px;">  {{resultRide.workLocation}}</p>
+                    <i class="ion-ios-home orange" style="font-size:100%; float:left; margin-left: 27px;"> </i>
+                    <p style="margin-left: 45px;"> {{resultRide.district}}</p>
+                    <p style="margin-left: 45px;"> {{resultRide.municipality}}</p>
+                    <p style="margin-left: 45px;"> {{resultRide.street}}</p>
+
+                    <i class="ion-social-euro orange" style="font-size:100%; float:left;  margin-left: 29px;"> </i>
+                    <p style="margin-left: 47px;">  {{resultRide.cost}}</p>
+                    <a class="item item-icon-left assertive" href="#/rideDetails/{{resultRide.id}}/search">
+                        <i class="icon ion-information-circled orange"></i>
+                        <a1 class="orange"> Ver detalhes </a1>
+                    </a>
+                </div>
+            </div>
+
+            <br>
+
+            <a ng-if="resultRides.length <= 0" class="item item-icon-left orange" style="background-color: rgb(243,121,38)">
+                <i class="icon ion-map" style="color: white"></i>
+                <div style="color: white"> Sem Resultados </div>
+            </a>
+
+            <br>
+        </div>
+
+        <div ng-if="!hasDate">
+            <div class="list card">
+                <div class="item item-divider">
+                    És condutor?
+                </div>
+                <div class="item item-body">
+                    <img class="full-image" ng-src="img/driver.jpg">
+                    <h2>Divide as tuas despesas!</h2>
+                    <p>
+                        Faz as viagens para o trabalho ou de regresso a casa mais animadas partilhando os lugares vagos do teu veículo.
+                    </p>
+                </div>
+            </div>
+
+            <div class="list card">
+                <div class="item item-divider">
+                    És passageiro?
+                </div>
+                <div class="item item-body">
+                    <img class="full-image" ng-src="img/share.jpg">
+                    <h2>Viaja poupando!</h2>
+                    <p>
+                        Procura a boleia para a data e hora que precisas e viaja por um custo inferior.
+                    </p>
+                </div>
+            </div><br><br>
+        </div>
+
+
+        <script id="districts.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <h1 class="title">Escolha o distrito</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list" >
+                        <a ng-click="districtSelected(ride.district)"
+                           class="item item-icon-left"
+                           ng-repeat="ride in filteredRides | unique : 'district'">
+                            {{ride.district}}
+                        </a>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+        <script id="municipalities.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <h1 class="title">Escolha o concelho</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list" >
+                        <a ng-click="municipalitySelected(ride.municipality)"
+                           class="item item-icon-left"
+                           ng-repeat="ride in filteredRidesWithDistrict | unique : 'municipality'">
+                            {{ride.municipality}}
+                        </a>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+        <script id="workLocations.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <h1 class="title">Escolha o local de trabalho</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list" >
+                        <a ng-click="workLocationSelected(ride.workLocation)"
+                           class="item item-icon-left"
+                           ng-repeat="ride in resultRides | unique : 'workLocation'">
+                            {{ride.workLocation}}
+                        </a>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+        <script id="startOcasional.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <h1 class="title">Escolha o local de Partida</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list" >
+                        <a ng-click="startOcasionalSelected(ride.startLocation)"
+                           class="item item-icon-left"
+                           ng-repeat="ride in resultRides | unique : 'startLocation'">
+                            {{ride.startLocation}}
+                        </a>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+        <script id="endOcasional.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <h1 class="title">Escolha o local de Chegada</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list" >
+                        <a ng-click="endOcasionalSelected(ride.destination)"
+                           class="item item-icon-left"
+                           ng-repeat="ride in resultRides | unique : 'destination'">
+                            {{ride.destination}}
+                        </a>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+    </ion-content>
+</ion-view>
